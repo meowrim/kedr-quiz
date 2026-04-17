@@ -170,6 +170,7 @@
         function finishQuiz(isCorrect) {
             if (answered) return;
             answered = true;
+            quizPanel.classList.add('hidden');
             answersBlock.classList.add('hidden');
             resultBlock.classList.remove('hidden');
             if (isCorrect) {
