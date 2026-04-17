@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Сувенирная лавка — AR Викторина</title>
+    <title>AR Викторина — Кедровые орехи</title>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
@@ -18,6 +18,7 @@
             bottom: 20px;
             left: 20px;
             background: rgba(0,0,0,0.6);
+            color: white;
             padding: 6px 12px;
             border-radius: 30px;
             font-size: 12px;
@@ -33,18 +34,6 @@
             max-width: 85vw;
             z-index: 150;
             display: none;
-            backdrop-filter: blur(0px);
-        }
-        .nut-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #2c5a3a;
-            text-align: center;
-            border-bottom: 2px solid #C0F3BC;
-            display: inline-block;
-            width: auto;
-            margin: 0 auto 12px auto;
-            padding-bottom: 4px;
         }
         .ar-panel img {
             width: 100%;
@@ -135,7 +124,7 @@
     </style>
 </head>
 <body>
-    <div class="status" id="statusMsg">🔍 Наведите камеру на маркер карточку действия</div>
+    <div class="status" id="statusMsg">🔍 Наведите камеру на карточку действий</div>
 
     <div id="arPanel" class="ar-panel">
         <img src="5407028049875768637.jpg" alt="Кедровые орехи">
