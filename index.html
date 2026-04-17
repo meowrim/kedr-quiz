@@ -13,7 +13,7 @@
             overflow: hidden;
             font-family: 'IBM Plex Serif', serif;
         }
-        .ar-info {
+        .status {
             position: fixed;
             bottom: 20px;
             left: 20px;
@@ -39,22 +39,13 @@
             padding: 20px 16px;
             z-index: 150;
             display: none;
-            backdrop-filter: blur(2px);
-            transition: all 0.2s ease;
         }
-        .quiz-photo {
+        .quiz-panel img {
             width: 100%;
             border-radius: 24px;
             margin-bottom: 16px;
-            overflow: hidden;
         }
-        .quiz-photo img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 24px;
-        }
-        .question-block {
+        .question {
             background-color: #4B935F;
             border-radius: 28px;
             padding: 14px 16px;
@@ -64,13 +55,13 @@
             text-align: center;
             margin-bottom: 20px;
         }
-        .answers-list {
+        .answers {
             display: flex;
             flex-direction: column;
             gap: 12px;
             margin-bottom: 20px;
         }
-        .answer-option {
+        .answer {
             display: flex;
             align-items: center;
             gap: 12px;
@@ -79,9 +70,9 @@
             border-radius: 60px;
             padding: 10px 16px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: 0.2s;
         }
-        .answer-number {
+        .answer-num {
             width: 32px;
             height: 32px;
             background: white;
@@ -99,12 +90,11 @@
             font-size: 0.95rem;
             font-weight: 500;
             color: #1e2a32;
-            line-height: 1.3;
         }
-        .answer-option.selected {
+        .answer.selected {
             background-color: #C0F3BC;
         }
-        .result-area {
+        .result {
             margin-top: 16px;
             text-align: center;
         }
@@ -117,13 +107,12 @@
             font-size: 1.3rem;
             margin-bottom: 12px;
         }
-        .result-message {
+        .result-msg {
             background: white;
             border: 2px solid #4B935F;
             border-radius: 28px;
             padding: 14px;
             color: #1e2a32;
-            font-size: 1rem;
         }
         .hidden {
             display: none;
@@ -134,9 +123,8 @@
                 padding: 14px;
                 right: 12px;
             }
-            .question-block {
+            .question {
                 font-size: 1rem;
-                padding: 10px;
             }
             .answer-text {
                 font-size: 0.85rem;
@@ -145,88 +133,77 @@
     </style>
 </head>
 <body>
-    <div class="ar-info" id="markerStatus">🔍 Наведите камеру на маркер (Hiro)</div>
+    <div class="status" id="statusMsg">🔍 Наведите камеру на маркер kedr.png</div>
 
     <div id="quizPanel" class="quiz-panel">
-        <div class="quiz-photo">
-            <img src="5407028049875768637.jpg" alt="Кедровые орехи">
-        </div>
-        <div class="question-block" id="questionText">
-            Почему кедровые орехи ценятся в рационе человека?
-        </div>
-        <div id="answersArea">
-            <div class="answer-option" data-correct="true">
-                <div class="answer-number">1</div>
+        <img src="5407028049875768637.jpg" alt="Кедровые орехи">
+        <div class="question">Почему кедровые орехи ценятся в рационе человека?</div>
+        <div id="answersBlock" class="answers">
+            <div class="answer" data-correct="true">
+                <div class="answer-num">1</div>
                 <div class="answer-text">Высокое содержание полезных жиров и витаминов</div>
             </div>
-            <div class="answer-option" data-correct="false">
-                <div class="answer-number">2</div>
+            <div class="answer" data-correct="false">
+                <div class="answer-num">2</div>
                 <div class="answer-text">Содержат много сахара</div>
             </div>
-            <div class="answer-option" data-correct="false">
-                <div class="answer-number">3</div>
+            <div class="answer" data-correct="false">
+                <div class="answer-num">3</div>
                 <div class="answer-text">Состоят в основном из воды</div>
             </div>
         </div>
-        <div id="resultContainer" class="result-area hidden"></div>
+        <div id="resultBlock" class="result hidden"></div>
     </div>
 
     <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
-        <a-marker preset="hiro">
-            <a-entity position="0 0 0"></a-entity>
-        </a-marker>
+        <a-marker type="pattern" url="kedr.patt"></a-marker>
         <a-entity camera></a-entity>
     </a-scene>
 
     <script>
-        const markerStatus = document.getElementById('markerStatus');
+        const statusMsg = document.getElementById('statusMsg');
         const quizPanel = document.getElementById('quizPanel');
-        const answersArea = document.getElementById('answersArea');
-        const resultContainer = document.getElementById('resultContainer');
+        const answersBlock = document.getElementById('answersBlock');
+        const resultBlock = document.getElementById('resultBlock');
         let answered = false;
 
-        function showResult(isCorrect) {
+        function finishQuiz(isCorrect) {
             if (answered) return;
             answered = true;
-            answersArea.classList.add('hidden');
-            resultContainer.classList.remove('hidden');
+            answersBlock.classList.add('hidden');
+            resultBlock.classList.remove('hidden');
             if (isCorrect) {
-                resultContainer.innerHTML = `
+                resultBlock.innerHTML = `
                     <div class="result-title">Правильно!</div>
-                    <div class="result-message">Получите 100 монет.<br>Карточка используется сразу и возвращается в колоду.</div>
+                    <div class="result-msg">Получите 100 монет.<br>Карточка используется сразу и возвращается в колоду.</div>
                 `;
             } else {
-                resultContainer.innerHTML = `
+                resultBlock.innerHTML = `
                     <div class="result-title">Не верно!</div>
-                    <div class="result-message">Попробуйте в следующий раз</div>
+                    <div class="result-msg">Попробуйте в следующий раз</div>
                 `;
             }
         }
 
-        const answerOptions = document.querySelectorAll('.answer-option');
-        answerOptions.forEach(opt => {
-            opt.addEventListener('click', () => {
+        document.querySelectorAll('.answer').forEach(btn => {
+            btn.addEventListener('click', () => {
                 if (answered) return;
-                opt.classList.add('selected');
-                const isCorrect = opt.getAttribute('data-correct') === 'true';
-                setTimeout(() => {
-                    showResult(isCorrect);
-                }, 200);
+                btn.classList.add('selected');
+                const isCorrect = btn.getAttribute('data-correct') === 'true';
+                setTimeout(() => finishQuiz(isCorrect), 200);
             });
         });
 
         const marker = document.querySelector('a-marker');
         if (marker) {
             marker.addEventListener('markerFound', () => {
-                markerStatus.innerText = '✅ Маркер найден. Викторина справа активна.';
+                statusMsg.innerText = '✅ Маркер найден. Викторина справа активна.';
                 quizPanel.style.display = 'block';
             });
             marker.addEventListener('markerLost', () => {
-                markerStatus.innerText = '🔍 Маркер потерян. Наведите камеру на маркер.';
+                statusMsg.innerText = '🔍 Маркер потерян. Наведите камеру на kedr.png';
                 quizPanel.style.display = 'none';
             });
-        } else {
-            markerStatus.innerText = '⚠️ Ошибка загрузки AR. Проверьте HTTPS.';
         }
     </script>
 </body>
