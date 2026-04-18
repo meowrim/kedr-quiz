@@ -31,7 +31,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 24px;
+            padding: 16px;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             background: transparent;
@@ -45,66 +45,66 @@
         }
 
         .nut-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 600;
             color: #2c5a3a;
             text-align: center;
-            border-bottom: 3px solid #C0F3BC;
+            border-bottom: 2px solid #C0F3BC;
             display: inline-block;
             width: auto;
-            margin: 0 auto 20px auto;
-            padding-bottom: 8px;
+            margin: 0 auto 16px auto;
+            padding-bottom: 6px;
         }
 
         .quiz-content img {
             width: 100%;
-            border-radius: 32px;
-            margin-bottom: 28px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            border-radius: 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             display: block;
         }
 
         .question {
             background-color: #4B935F;
-            border-radius: 32px;
-            padding: 20px 24px;
+            border-radius: 28px;
+            padding: 14px 18px;
             color: white;
             font-weight: 600;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             text-align: center;
-            margin-bottom: 32px;
-            line-height: 1.4;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+            line-height: 1.35;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .answers {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            margin-bottom: 28px;
+            gap: 12px;
+            margin-bottom: 20px;
         }
 
         .answer {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
             background: white;
             border: 2px solid #4B935F;
-            border-radius: 80px;
-            padding: 14px 20px;
+            border-radius: 60px;
+            padding: 10px 16px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            transition: 0.2s;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
         }
 
         .answer:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .answer-num {
-            width: 44px;
-            height: 44px;
+            width: 36px;
+            height: 36px;
             background: white;
             border: 2px solid #4B935F;
             border-radius: 50%;
@@ -112,16 +112,16 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: #4B935F;
             flex-shrink: 0;
         }
 
         .answer-text {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             font-weight: 500;
             color: #1e2a32;
-            line-height: 1.35;
+            line-height: 1.3;
         }
 
         .answer.selected {
@@ -136,22 +136,22 @@
 
         .result-title {
             background-color: #4B935F;
-            border-radius: 32px;
-            padding: 18px;
+            border-radius: 28px;
+            padding: 14px;
             color: white;
             font-weight: 700;
-            font-size: 1.6rem;
-            margin-bottom: 18px;
+            font-size: 1.4rem;
+            margin-bottom: 14px;
         }
 
         .result-msg {
             background: white;
             border: 2px solid #4B935F;
-            border-radius: 32px;
-            padding: 18px;
+            border-radius: 28px;
+            padding: 14px;
             color: #1e2a32;
-            font-size: 1.05rem;
-            line-height: 1.4;
+            font-size: 0.95rem;
+            line-height: 1.35;
         }
 
         .hidden {
@@ -160,13 +160,13 @@
 
         .status {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 16px;
+            left: 16px;
             background: rgba(0,0,0,0.7);
             color: white;
-            padding: 8px 16px;
-            border-radius: 40px;
-            font-size: 13px;
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-size: 12px;
             z-index: 250;
             pointer-events: none;
             backdrop-filter: blur(6px);
@@ -175,46 +175,43 @@
 
         @media (max-width: 600px) {
             .fullscreen-quiz {
-                padding: 16px;
-            }
-            .quiz-content {
-                max-width: 100%;
+                padding: 12px;
             }
             .nut-title {
-                font-size: 1.2rem;
-                margin-bottom: 16px;
+                font-size: 1.1rem;
+                margin-bottom: 12px;
             }
             .quiz-content img {
-                margin-bottom: 20px;
+                margin-bottom: 16px;
             }
             .question {
-                font-size: 1.1rem;
-                padding: 16px 20px;
-                margin-bottom: 24px;
+                font-size: 1rem;
+                padding: 12px 16px;
+                margin-bottom: 18px;
             }
             .answers {
-                gap: 12px;
-                margin-bottom: 20px;
+                gap: 10px;
+                margin-bottom: 16px;
             }
             .answer {
-                padding: 10px 16px;
-                gap: 12px;
+                padding: 8px 14px;
+                gap: 10px;
             }
             .answer-num {
-                width: 36px;
-                height: 36px;
-                font-size: 1.1rem;
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
             }
             .answer-text {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
             .result-title {
-                font-size: 1.3rem;
-                padding: 14px;
+                font-size: 1.2rem;
+                padding: 12px;
             }
             .result-msg {
-                font-size: 0.9rem;
-                padding: 14px;
+                font-size: 0.85rem;
+                padding: 12px;
             }
         }
 
@@ -223,10 +220,10 @@
                 max-width: 900px;
             }
             .question {
-                font-size: 1.5rem;
+                font-size: 1.35rem;
             }
             .answer-text {
-                font-size: 1.15rem;
+                font-size: 1rem;
             }
         }
     </style>
