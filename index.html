@@ -229,7 +229,7 @@
     </style>
 </head>
 <body>
-    <div class="status" id="statusMsg">🔍 Наведите камеру на маркер (kedr.png)</div>
+    <div class="status" id="statusMsg">🔍 Наведите камеру на карточку "Кедровые орехи"</div>
 
     <div id="fullscreenQuiz" class="fullscreen-quiz">
         <div class="quiz-content">
@@ -302,9 +302,6 @@
             marker.addEventListener('markerFound', () => {
                 statusMsg.innerText = '✅ Маркер найден. Викторина на весь экран.';
                 fullscreenQuiz.style.display = 'flex';
-            });
-            marker.addEventListener('markerLost', () => {
-                statusMsg.innerText = '🔍 Маркер потерян. Наведите камеру снова.';
             });
         }
     </script>
