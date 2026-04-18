@@ -13,76 +13,101 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             margin: 0;
             overflow: hidden;
             font-family: 'IBM Plex Serif', serif;
         }
+
         .fullscreen-quiz {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: transparent;
             z-index: 200;
             display: none;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 24px;
             overflow-y: auto;
-        }
-        .quiz-content {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-            border-radius: 40px;
-            padding: 30px;
+            -webkit-overflow-scrolling: touch;
             background: transparent;
         }
+
+        .quiz-content {
+            max-width: 800px;
+            width: 100%;
+            background: transparent;
+            padding: 0;
+        }
+
+        .nut-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c5a3a;
+            text-align: center;
+            border-bottom: 3px solid #C0F3BC;
+            display: inline-block;
+            width: auto;
+            margin: 0 auto 20px auto;
+            padding-bottom: 8px;
+        }
+
         .quiz-content img {
             width: 100%;
             border-radius: 32px;
             margin-bottom: 28px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            display: block;
         }
+
         .question {
-            background: #4B935F;
-            border-radius: 40px;
-            padding: 22px 24px;
+            background-color: #4B935F;
+            border-radius: 32px;
+            padding: 20px 24px;
             color: white;
-            font-weight: 700;
-            font-size: 1.4rem;
+            font-weight: 600;
+            font-size: 1.3rem;
             text-align: center;
-            margin-bottom: 30px;
-            line-height: 1.3;
+            margin-bottom: 32px;
+            line-height: 1.4;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
+
         .answers {
             display: flex;
             flex-direction: column;
-            gap: 18px;
-            margin-bottom: 30px;
+            gap: 16px;
+            margin-bottom: 28px;
         }
+
         .answer {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 16px;
             background: white;
             border: 2px solid #4B935F;
             border-radius: 80px;
-            padding: 16px 24px;
+            padding: 14px 20px;
             cursor: pointer;
             transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
+
         .answer:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.1);
         }
+
         .answer-num {
             width: 44px;
             height: 44px;
-            border-radius: 50%;
+            background: white;
             border: 2px solid #4B935F;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -90,43 +115,49 @@
             font-size: 1.3rem;
             color: #4B935F;
             flex-shrink: 0;
-            background: white;
         }
+
         .answer-text {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 500;
             color: #1e2a32;
-            line-height: 1.4;
+            line-height: 1.35;
         }
+
         .answer.selected {
-            background: #C0F3BC;
-            border-color: #3e7f54;
+            background-color: #C0F3BC;
+            border-color: #3a784a;
         }
+
         .result {
-            margin-top: 24px;
+            margin-top: 0;
             text-align: center;
         }
+
         .result-title {
-            background: #4B935F;
-            border-radius: 40px;
-            padding: 20px;
+            background-color: #4B935F;
+            border-radius: 32px;
+            padding: 18px;
             color: white;
             font-weight: 700;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 1.6rem;
+            margin-bottom: 18px;
         }
+
         .result-msg {
             background: white;
             border: 2px solid #4B935F;
-            border-radius: 40px;
-            padding: 20px;
+            border-radius: 32px;
+            padding: 18px;
             color: #1e2a32;
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             line-height: 1.4;
         }
+
         .hidden {
             display: none;
         }
+
         .status {
             position: fixed;
             bottom: 20px;
@@ -135,25 +166,38 @@
             color: white;
             padding: 8px 16px;
             border-radius: 40px;
-            font-size: 14px;
+            font-size: 13px;
             z-index: 250;
+            pointer-events: none;
             backdrop-filter: blur(6px);
             font-weight: 500;
         }
+
         @media (max-width: 600px) {
             .fullscreen-quiz {
                 padding: 16px;
             }
             .quiz-content {
-                padding: 20px;
+                max-width: 100%;
+            }
+            .nut-title {
+                font-size: 1.2rem;
+                margin-bottom: 16px;
+            }
+            .quiz-content img {
+                margin-bottom: 20px;
             }
             .question {
-                font-size: 1.2rem;
-                padding: 18px;
+                font-size: 1.1rem;
+                padding: 16px 20px;
                 margin-bottom: 24px;
             }
+            .answers {
+                gap: 12px;
+                margin-bottom: 20px;
+            }
             .answer {
-                padding: 12px 18px;
+                padding: 10px 16px;
                 gap: 12px;
             }
             .answer-num {
@@ -162,26 +206,27 @@
                 font-size: 1.1rem;
             }
             .answer-text {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
             }
             .result-title {
-                font-size: 1.4rem;
-                padding: 16px;
+                font-size: 1.3rem;
+                padding: 14px;
             }
             .result-msg {
-                font-size: 1rem;
-                padding: 16px;
+                font-size: 0.9rem;
+                padding: 14px;
             }
         }
+
         @media (min-width: 1200px) {
             .quiz-content {
-                max-width: 1100px;
+                max-width: 900px;
             }
             .question {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
             .answer-text {
-                font-size: 1.2rem;
+                font-size: 1.15rem;
             }
         }
     </style>
@@ -191,6 +236,9 @@
 
     <div id="fullscreenQuiz" class="fullscreen-quiz">
         <div class="quiz-content">
+            <div class="title-wrapper" style="text-align: center;">
+                <div class="nut-title">Кедровые орехи</div>
+            </div>
             <img src="5407028049875768637.jpg" alt="Кедровые орехи">
             <div id="questionBlock" class="question">Почему кедровые орехи ценятся в рационе человека?</div>
             <div id="answersBlock" class="answers">
